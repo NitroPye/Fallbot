@@ -75,10 +75,7 @@ def randomize_day():
 
 
 def post_to_twitter():
-    print random.choice(PHRASE_BOOK)
-    print get_time_till_fall()
     p = random.choice(PHRASE_BOOK) % get_time_till_fall()
-    print(p)
     TAPI.update_status(status=p)
 
 def run():
