@@ -24,7 +24,7 @@ PHRASE_BOOK = [
     "IT'S FALL",
     "🍁 🍂 🎃 ☕ 🍃",
 ]
-FALL_START = datetime(datetime.now().year, 10, 21)
+FALL_START = datetime(datetime.now().year, 9, 22)
 LAST_RUN_LOG_FILE = 'last_run.log'
 
 ### Check if ran today - if false then maybe we should run
