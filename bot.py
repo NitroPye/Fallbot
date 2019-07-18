@@ -1,38 +1,31 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
 import random
 import tweepy
 
-
 from pytz import timezone, utc
-
 from time import sleep
-
 from datetime import datetime, timedelta, date
-
 
 CONSUMER_KEY = 'xxx'
 CONSUMER_SECRET = 'xxx'
 ACCESS_TOKEN = 'xxx'
 ACCESS_TOKEN_SECRET = 'xxx'
 
-
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-
 
 """
 setting this as the constant for TAPI
 """
 TAPI = tweepy.API(auth)
-
-### 
 PHRASE_BOOK = [
     "IT'S FALL",
     "🍁 🍂 🎃 ☕ 🍃",
 ]
-FALL_START = datetime(2018, 10, 21)
-
+FALL_START = datetime(datetime.now().year, 10, 21)
 LAST_RUN_LOG_FILE = 'last_run.log'
-
 
 ### Check if ran today - if false then maybe we should run
 def ran_today():
@@ -70,8 +63,6 @@ def randomize_day():
         We could normalize this but I like what we've got so far.
         Ex: Chance to run at midnight, very low, chance to run at noon 50%, chance to run at 11:59pm 100%.
     """
-
-
     seconds_in_day = 86400
     n = datetime.now()
     seconds_today = n.hour * 3600 + n.minute * 60 + n.second
@@ -84,9 +75,10 @@ def randomize_day():
 
 
 def post_to_twitter():
+    print random.choice(PHRASE_BOOK)
+    print get_time_till_fall()
     p = random.choice(PHRASE_BOOK) % get_time_till_fall()
-
-    print (p)
+    print(p)
     TAPI.update_status(status=p)
 
 def run():
